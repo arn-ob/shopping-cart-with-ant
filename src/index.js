@@ -1,53 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Menu, Dropdown, Icon, Button } from "antd";
-
+import { Layout, Menu } from "antd";
 import "antd/dist/antd.css";
 import "./styles.css";
 
-const menu = (
-  <Menu>
-    <Menu.Item>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="http://www.alipay.com/"
-      >
-        1st menu item
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="http://www.taobao.com/"
-      >
-        2nd menu item
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
-        3rd menu item
-      </a>
-    </Menu.Item>
-  </Menu>
-);
+const { Header, Content, Footer } = Layout;
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-      <Button size="default" type="primary">
-        hello
-      </Button>
-
-      <Dropdown overlay={menu}>
-        <a className="ant-dropdown-link" href="#">
-          Hover me <Icon type="down" />
-        </a>
-      </Dropdown>
-    </div>
+    <Layout className="layout">
+      <Header>
+        <div className="logo" />
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={["2"]}
+          style={{ lineHeight: "64px" }}
+        >
+          <Menu.Item key="1">Shopping Cart</Menu.Item>
+        </Menu>
+      </Header>
+      <Content style={{ padding: "0 50px" }}>
+        <div style={{ background: "#fff", padding: 24, minHeight: 280 }}>
+          Content
+        </div>
+      </Content>
+    </Layout>
   );
 }
 
