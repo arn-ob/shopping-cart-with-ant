@@ -4,7 +4,7 @@ import { Layout, Menu } from "antd";
 import "antd/dist/antd.css";
 import "./styles.css";
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
 function App() {
   return (
