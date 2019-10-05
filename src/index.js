@@ -1,30 +1,98 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-import { Layout, Menu } from "antd";
 import "antd/dist/antd.css";
 import "./styles.css";
+import {
+  Layout,
+  message,
+  Menu,
+  Breadcrumb,
+  Icon,
+  Row,
+  Col,
+  Button,
+  Dropdown
+} from "antd";
 
-const { Header, Content } = Layout;
+// Component Import
+import CartList from "./component/content";
+
+const { SubMenu } = Menu;
+const { Header, Content, Footer, Sider } = Layout;
+
+const menu = (
+  <Menu>
+    <Menu.Item key="1">
+      <Icon type="user" />
+      1st menu item
+    </Menu.Item>
+    <Menu.Item key="2">
+      <Icon type="user" />
+      2nd menu item
+    </Menu.Item>
+    <Menu.Item key="3">
+      <Icon type="user" />
+      3rd item
+    </Menu.Item>
+  </Menu>
+);
 
 function App() {
+  const [cart, setCart] = useState({
+    shoppingCart: []
+  });
+
+  useEffect(() => {
+    console.log("list", cart.shoppingCart.length);
+  });
+
+  const updateField = e => {
+    console.log("Check 1", e);
+    setCart({
+      ...cart,
+      shoppingCart: [...cart.shoppingCart, e]
+    });
+  };
+
   return (
-    <Layout className="layout">
-      <Header>
+    <Layout>
+      <Header className="header">
         <div className="logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={["2"]}
-          style={{ lineHeight: "64px" }}
-        >
-          <Menu.Item key="1">Shopping Cart</Menu.Item>
-        </Menu>
+        <Row>
+          <Col span={8}>
+            <Menu
+              theme="dark"
+              mode="horizontal"
+              defaultSelectedKeys={["2"]}
+              style={{ lineHeight: "64px" }}
+            >
+              <Menu.Item key="1">Cart Demo</Menu.Item>
+            </Menu>
+          </Col>
+          <Col style={{ textAlign: "right" }}>
+            <Dropdown.Button overlay={menu} icon={<Icon type="user" />}>
+              {cart.shoppingCart.length === 0
+                ? "Cart List"
+                : "Added cart " + cart.shoppingCart.length}
+            </Dropdown.Button>
+          </Col>
+        </Row>
       </Header>
-      <Content style={{ padding: "0 50px" }}>
-        <div style={{ background: "#fff", padding: 24, minHeight: 280 }}>
-          Content
-        </div>
+      <Content style={{ padding: "0 50px", height: "auto" }}>
+        <Breadcrumb style={{ margin: "16px 0" }}>
+          <Breadcrumb.Item>Home</Breadcrumb.Item>
+          <Breadcrumb.Item>List</Breadcrumb.Item>
+          <Breadcrumb.Item>App</Breadcrumb.Item>
+        </Breadcrumb>
+        <Layout style={{ background: "#fff" }}>
+          <Content>
+            <CartList update={updateField} listcount={4} />
+          </Content>
+        </Layout>
       </Content>
+      <Footer style={{ textAlign: "center" }}>
+        Ant Design ©2018 Created by Ant UED
+      </Footer>
     </Layout>
   );
 }
