@@ -76,8 +76,14 @@ export default function Drawers(props) {
 
         {addedList.shoppingCartList.length === 0 ? null : (
           <Fragment>
-            <Button style={{ margin: 5 }}>Procced</Button>
-            <Button style={{ margin: 5 }} onClick={() => props.clear()}>
+            <Button type="primary" style={{ margin: 5 }}>
+              Procced
+            </Button>
+            <Button
+              type="primary"
+              style={{ margin: 5 }}
+              onClick={() => props.clear()}
+            >
               Clear
             </Button>
           </Fragment>
