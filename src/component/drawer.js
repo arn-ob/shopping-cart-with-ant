@@ -33,21 +33,15 @@ export default function Drawers(props) {
         color: "rgba(0,0,0,0.65)"
       }}
     >
-      <img
-        style={{ margin: 10 }}
-        src={url}
-        alt="example"
-        width="50"
-        height="50"
-      />
+      <img src={url} alt="example" width="50" height="50" />
       <p
         style={{
-          marginRight: 8,
+          marginLeft: 8,
           display: "inline-block",
           color: "rgba(0,0,0,0.85)"
         }}
       >
-        {title}:
+        {title}
       </p>
     </div>
   );
