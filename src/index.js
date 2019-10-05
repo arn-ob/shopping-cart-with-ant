@@ -48,6 +48,8 @@ function App() {
 
   const updateField = e => {
     console.log("Check 1", e);
+    message.destroy();
+    message.info("Added to cart");
     setCart({
       ...cart,
       shoppingCart: [...cart.shoppingCart, e]
