@@ -5,91 +5,30 @@ const { Meta } = Card;
 
 export default function CartList(props) {
   const [addToCart, setAddToCart] = useState({
-    list: [1, 2, 3, 4, 5]
+    list: props.list
   });
 
   return (
     <Fragment>
       {/* <Button onClick={() => props.update("Count")}>Click For Update</Button> */}
 
-      {addToCart.list.map(item => (
-        <Row gutter={64}>
-          <Col span={4} style={{ margin: 10 }}>
-            <Card
-              hoverable
-              actions={[
-                <Icon
-                  type="shopping-cart"
-                  onClick={() => props.update({ c: item })}
-                />,
-                <Icon type="delete" />
-              ]}
-              style={{ width: 240, margin: 10 }}
-              cover={
-                <img
-                  alt="example"
-                  src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                />
-              }
-            >
-              <Meta
-                title="Europe Street beat"
-                description="www.instagram.com"
+      <div style={{ direction: "rft" }}>
+        {addToCart.list.map(item => (
+          <Card
+            hoverable
+            actions={[
+              <Icon
+                type="shopping-cart"
+                onClick={() => props.update({ item: item })}
               />
-            </Card>
-          </Col>
-          <Col span={2} />
-          <Col span={4} style={{ margin: 10 }}>
-            <Card
-              hoverable
-              actions={[
-                <Icon
-                  type="shopping-cart"
-                  onClick={() => props.update([{ c: item }])}
-                />,
-                <Icon type="delete" />
-              ]}
-              style={{ width: 240, margin: 10 }}
-              cover={
-                <img
-                  alt="example"
-                  src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                />
-              }
-            >
-              <Meta
-                title="Europe Street beat"
-                description="www.instagram.com"
-              />
-            </Card>
-          </Col>
-          <Col span={2} />
-          <Col span={4} style={{ margin: 10 }}>
-            <Card
-              hoverable
-              actions={[
-                <Icon
-                  type="shopping-cart"
-                  onClick={() => props.update([{ c: item }])}
-                />,
-                <Icon type="delete" />
-              ]}
-              style={{ width: 240, margin: 10 }}
-              cover={
-                <img
-                  alt="example"
-                  src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                />
-              }
-            >
-              <Meta
-                title="Europe Street beat"
-                description="www.instagram.com"
-              />
-            </Card>
-          </Col>
-        </Row>
-      ))}
+            ]}
+            style={{ width: 240, margin: 10 }}
+            cover={<img alt="example" src={item.img} />}
+          >
+            <Meta title={item.title} description={item.description} />
+          </Card>
+        ))}
+      </div>
     </Fragment>
   );
 }

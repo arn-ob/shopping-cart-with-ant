@@ -16,9 +16,12 @@ import {
 
 // Component Import
 import CartList from "./component/content";
+import Drawers from "./component/drawer";
 
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
+
+document.title = "Shopping Cart Demo";
 
 const menu = (
   <Menu>
@@ -29,10 +32,6 @@ const menu = (
     <Menu.Item key="2">
       <Icon type="user" />
       2nd menu item
-    </Menu.Item>
-    <Menu.Item key="3">
-      <Icon type="user" />
-      3rd item
     </Menu.Item>
   </Menu>
 );
@@ -56,10 +55,29 @@ function App() {
     });
   };
 
+  const list = [
+    {
+      img: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
+      title: "Item 1",
+      description: "item 1 details"
+    },
+    {
+      img: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
+      title: "Item 2",
+      description: "item 2 details"
+    },
+    {
+      img: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
+      title: "Item 3",
+      description: "item 3 details"
+    }
+  ];
+
+  console.log("Cart List", cart.shoppingCart);
+
   return (
     <Layout>
       <Header className="header">
-        <div className="logo" />
         <Row>
           <Col span={8}>
             <Menu
@@ -72,29 +90,34 @@ function App() {
             </Menu>
           </Col>
           <Col style={{ textAlign: "right" }}>
-            <Dropdown.Button overlay={menu} icon={<Icon type="user" />}>
+            <Drawers
+              shoppingCart={cart.shoppingCart}
+              clear={() => {
+                setCart({ ...cart, shoppingCart: [] });
+                message.destroy();
+                message.info("Cart Clear");
+              }}
+            />
+
+            {/* <Button
+              onClick={() => console.log("asd")}
+              className="ant-dropdown-link"
+              href="#"
+            >
               {cart.shoppingCart.length === 0
                 ? "Cart List"
                 : "Added cart " + cart.shoppingCart.length}
-            </Dropdown.Button>
+            </Button> */}
           </Col>
         </Row>
       </Header>
       <Content style={{ padding: "0 50px", height: "auto" }}>
-        <Breadcrumb style={{ margin: "16px 0" }}>
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
-        </Breadcrumb>
         <Layout style={{ background: "#fff" }}>
           <Content>
-            <CartList update={updateField} listcount={4} />
+            <CartList update={updateField} list={list} />
           </Content>
         </Layout>
       </Content>
-      <Footer style={{ textAlign: "center" }}>
-        Ant Design ©2018 Created by Ant UED
-      </Footer>
     </Layout>
   );
 }
