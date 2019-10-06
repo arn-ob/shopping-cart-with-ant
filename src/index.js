@@ -2,39 +2,15 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import "antd/dist/antd.css";
 import "./styles.css";
-import {
-  Layout,
-  message,
-  Menu,
-  Breadcrumb,
-  Icon,
-  Row,
-  Col,
-  Button,
-  Dropdown
-} from "antd";
+import { Layout, message, Menu, Icon, Row, Col } from "antd";
 
 // Component Import
 import CartList from "./component/content";
 import Drawers from "./component/drawer";
 
-const { SubMenu } = Menu;
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content } = Layout;
 
 document.title = "Shopping Cart Demo";
-
-const menu = (
-  <Menu>
-    <Menu.Item key="1">
-      <Icon type="user" />
-      1st menu item
-    </Menu.Item>
-    <Menu.Item key="2">
-      <Icon type="user" />
-      2nd menu item
-    </Menu.Item>
-  </Menu>
-);
 
 function App() {
   const [cart, setCart] = useState({
@@ -70,6 +46,31 @@ function App() {
       img: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
       title: "Item 3",
       description: "item 3 details"
+    },
+    {
+      img: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
+      title: "Item 4",
+      description: "item 4 details"
+    },
+    {
+      img: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
+      title: "Item 4",
+      description: "item 4 details"
+    },
+    {
+      img: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
+      title: "Item 4",
+      description: "item 4 details"
+    },
+    {
+      img: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
+      title: "Item 4",
+      description: "item 4 details"
+    },
+    {
+      img: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
+      title: "Item 4",
+      description: "item 4 details"
     }
   ];
 

@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { Drawer, Button, Row, Col } from "antd";
+import { Drawer, Button, Row, Col, Icon, Badge } from "antd";
 
 export default function Drawers(props) {
   const [addedList, setAddedList] = useState({
@@ -49,10 +49,22 @@ export default function Drawers(props) {
   return (
     <Fragment>
       <Button onClick={update}>
+        <Badge
+          count={addedList.shoppingCartList.length}
+          style={{
+            backgroundColor: "#fff",
+            color: "#999",
+            boxShadow: "0 0 0 1px red inset"
+          }}
+        >
+          <Icon style={{ backgroundColor: "white" }} type="shopping-cart" />
+        </Badge>
+      </Button>
+      {/* <Button onClick={update}>
         {addedList.shoppingCartList.length === 0
           ? "Cart List"
           : "Added cart " + addedList.shoppingCartList.length}
-      </Button>
+      </Button> */}
       <Drawer
         title="Added Cart List"
         width={250}
