@@ -13,21 +13,25 @@ export default function CartList(props) {
       {/* <Button onClick={() => props.update("Count")}>Click For Update</Button> */}
 
       <div style={{ direction: "rft" }}>
-        {addToCart.list.map(item => (
-          <Card
-            hoverable
-            actions={[
-              <Icon
-                type="shopping-cart"
-                onClick={() => props.update({ item: item })}
-              />
-            ]}
-            style={{ width: 240, margin: 10 }}
-            cover={<img alt="example" src={item.img} />}
-          >
-            <Meta title={item.title} description={item.description} />
-          </Card>
-        ))}
+        <Row gutter={10}>
+          {addToCart.list.map(item => (
+            <Col xs={20} sm={16} md={12} lg={8} xl={4}>
+              <Card
+                hoverable
+                actions={[
+                  <Icon
+                    type="shopping-cart"
+                    onClick={() => props.update({ item: item })}
+                  />
+                ]}
+                style={{ width: 200 }}
+                cover={<img alt="example" src={item.img} />}
+              >
+                <Meta title={item.title} description={item.description} />
+              </Card>
+            </Col>
+          ))}
+        </Row>
       </div>
     </Fragment>
   );
